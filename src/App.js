@@ -24,7 +24,7 @@ export default class App extends Component {
 
   // unmounting
   componentWillUnmount(){
-    clearInterval(this.interval)
+    clearInterval(this.interval);
   }
 
 
@@ -32,6 +32,7 @@ export default class App extends Component {
   render() {
     //destructuring the Person state
     const {fullName,bio,imgSrc,profession}=this.state.Person
+    
     return (
       <div  style={{textAlign:'center'}}>
        <button onClick={this.showState}>{this.state.bool.toString()}</button>
@@ -42,7 +43,7 @@ export default class App extends Component {
            <img src={imgSrc} hint='developer image' style={{width:300,height:200}}></img>
          </div>
        }
-       <p> Time interval since the last component : {this.state.timeInterval}</p>
+       <p  style={{color:'#6D2323'}}> Time interval since the last component : {this.state.timeInterval}</p>
       </div>
       )
   }
