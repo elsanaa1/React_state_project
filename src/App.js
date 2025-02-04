@@ -6,13 +6,13 @@ export default class App extends Component {
   constructor(props){
     super(props)
     this.state={
-      Person:{fullName:'Sara Ben',bio:'IT student ', imgSrc:'/dev_pic.jpg', profession:'developper'},
+      Person:{fullName:'Sara Ben',bio:'Full stack dev ,Web devlopment ,JavaScript ,Python ,React', imgSrc:'/dev_pic.jpg', profession:'Programmer'},
       bool:false,
       timeInterval:0
     }
   }
    //arrow function showstate 
-  showState=()=>{(this.state.bool)? this.setState({bool:false}):this.setState({bool:true}) }
+  showState=()=>{this.setState((prevState)=>({bool:!prevState.bool}) ) }
 
 
   //mounting 
@@ -32,18 +32,26 @@ export default class App extends Component {
   render() {
     //destructuring the Person state
     const {fullName,bio,imgSrc,profession}=this.state.Person
-    
+    // style vars
+    const styleDiv={textAlign:'center'}
+    const styleimg={width:300,height:200}
+    const styleIntevalText={color:'#6D2323',marginTop:30}
+
     return (
-      <div  style={{textAlign:'center'}}>
-       <button onClick={this.showState}>{this.state.bool.toString()}</button>
+      <div  style={styleDiv}>
+       <button onClick={this.showState}> {this.state.bool ? "Hide Profile" : "Show Profile"}</button>
        {
          this.state.bool && 
          <div>
-           <p>{fullName},{bio},{profession}</p>
-           <img src={imgSrc} hint='developer image' style={{width:300,height:200}}></img>
+           <h2>{fullName}</h2>
+           <p>{profession}</p>
+            <p>{bio}</p>
+           <img src={imgSrc} alt='developer image' style={styleimg}></img>
          </div>
        }
-       <p  style={{color:'#6D2323'}}> Time interval since the last component : {this.state.timeInterval}</p>
+
+       {/* text to display the time interval since component mounted  */}
+       <p  style={styleIntevalText}> Time interval since the last component : {this.state.timeInterval}</p>
       </div>
       )
   }
