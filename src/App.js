@@ -35,23 +35,26 @@ export default class App extends Component {
     // style vars
     const styleDiv={textAlign:'center'}
     const styleimg={width:300,height:200}
-    const styleIntevalText={color:'#6D2323',marginTop:30}
+    const styleIntevalText={marginTop:30}
 
     return (
       <div  style={styleDiv}>
        <button onClick={this.showState}> {this.state.bool ? "Hide Profile" : "Show Profile"}</button>
        {
          this.state.bool && 
-         <div>
+         <section>
            <h2>{fullName}</h2>
            <p>{profession}</p>
             <p>{bio}</p>
            <img src={imgSrc} alt='developer image' style={styleimg}></img>
-         </div>
+         </section>
        }
 
        {/* text to display the time interval since component mounted  */}
-       <p  style={styleIntevalText}> Time interval since the last component : {this.state.timeInterval}</p>
+       <section>
+          <h3  style={styleIntevalText}>Time interval since the last component mount :</h3>
+          <p> {this.state.timeInterval}</p>
+       </section>
       </div>
       )
   }
